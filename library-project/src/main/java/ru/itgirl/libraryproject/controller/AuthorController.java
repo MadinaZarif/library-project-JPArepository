@@ -1,20 +1,28 @@
 package ru.itgirl.libraryproject.controller;
 
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import ru.itgirl.libraryproject.dto.AuthorCreateDto;
 import ru.itgirl.libraryproject.dto.AuthorDto;
 import ru.itgirl.libraryproject.service.AuthorService;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class AuthorController {
-private final AuthorService authorService;
+    private final AuthorService authorService;
 
-@GetMapping("/author/{id}")
-    AuthorDto getAuthorById(@PathVariable("id") Long id) {
-    return authorService.getAuthorByid(id);
-}
-}
+    @GetMapping("/authors")
+    String getAuthorsView(Model model) {
+        model.addAttribute("authors", authorService.getAllAuthors());
+        return "authors";
 
+
+    }
+}

@@ -3,24 +3,23 @@ package ru.itgirl.libraryproject.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.awt.geom.QuadCurve2D;
+import java.security.SecureRandom;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Getter
-@Builder
 @Setter
-public class Author {
+@Entity
+@Builder@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
-    private String name;
-
+    private String username;
     @Column(nullable = false)
-    private String surname;
-
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private String password;
+    @Column(nullable = false)
+    private String email;
 }

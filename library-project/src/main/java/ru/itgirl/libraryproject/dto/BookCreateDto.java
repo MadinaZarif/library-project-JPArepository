@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Builder
-public class AuthorDto {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookCreateDto {
     private Long id;
     private String name;
-    private String surname;
 
-    private List<BookDto> books;
 }
